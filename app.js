@@ -155,9 +155,9 @@
 
   /* ── ACTIVE NAV LINK ────────────────────────────── */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav__links a').forEach(a => {
+  document.querySelectorAll('.nav__links a, .nav__mobile a').forEach(a => {
     const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    if (href === currentPage || (currentPage === '' && (href === 'index.html' || href === 'index_fr.html'))) {
       a.classList.add('active');
     } else {
       a.classList.remove('active');
@@ -190,25 +190,44 @@
   const mlLocale = document.getElementById('ml-locale');
   const heroBgs = document.querySelectorAll('.hero-bg');
   const heroExp = document.getElementById('hero-explanation');
+  const isFrench = document.documentElement.lang === 'fr';
   
   if (mlAction && mlLocale && heroBgs.length >= 4) {
-    // Actions stay the same — service moods
-    const actions = ["exclusive access", "absolute secrecy", "effortless logistics", "Michelin dining"];
-    const actionExps = [
-      "From off-market collectibles to VIP fashion week — we open Paris’s most closed doors.",
-      "Completely untraceable movements and encrypted lives in the most watched city in the world.",
-      "Seamless door-to-door coordination across every arrondissement, every hour.",
-      "Unattainable reservations at Paris’s most coveted gastronomic institutions."
-    ];
+    const actions = isFrench 
+      ? ["un accès exclusif", "un secret absolu", "une logistique fluide", "un dîner étoilé"]
+      : ["exclusive access", "absolute secrecy", "effortless logistics", "Michelin dining"];
 
-    // Locales are now Paris locations only
-    const locales = ["the Eiffel Tower", "Le Marais", "Faubourg Saint-Honor\u00e9", "Le Ritz"];
-    const localeExps = [
-      "Private Trocad\u00e9ro dinners and after-hours Champ de Mars access — Paris at its most iconic.",
-      "Artist ateliers, private gallery previews, and contemporary art curated for your collection.",
-      "VIP boutique access, trunk shows, and front-row seats at Paris Fashion Week.",
-      "Palace-tier service: suite upgrades, private bars, and access when the hotel is fully booked."
-    ];
+    const actionExps = isFrench
+      ? [
+          "De l'accès aux ventes privées à la Fashion Week VIP — nous ouvrons les portes les plus fermées de Paris.",
+          "Des déplacements totalement indétectables et des vies cryptées dans la ville la plus surveillée au monde.",
+          "Une coordination de porte-à-porte fluide dans chaque arrondissement, à chaque heure.",
+          "Des réservations inaccessibles dans les institutions gastronomiques les plus convoitées de Paris."
+        ]
+      : [
+          "From off-market collectibles to VIP fashion week — we open Paris’s most closed doors.",
+          "Completely untraceable movements and encrypted lives in the most watched city in the world.",
+          "Seamless door-to-door coordination across every arrondissement, every hour.",
+          "Unattainable reservations at Paris’s most coveted gastronomic institutions."
+        ];
+
+    const locales = isFrench
+      ? ["la Tour Eiffel", "le Marais", "le Faubourg Saint-Honoré", "le Ritz"]
+      : ["the Eiffel Tower", "Le Marais", "Faubourg Saint-Honoré", "Le Ritz"];
+
+    const localeExps = isFrench
+      ? [
+          "Dîners privés au Trocadéro et accès au Champ de Mars après les heures d'ouverture — Paris à son apogée.",
+          "Ateliers d'artistes, vernissages privés et art contemporain sélectionné pour votre collection.",
+          "Accès VIP aux boutiques, présentations privées et premiers rangs à la Fashion Week de Paris.",
+          "Service de palace : surclassements en suite, bars privés et accès même quand l'hôtel est complet."
+        ]
+      : [
+          "Private Trocadero dinners and after-hours Champ de Mars access — Paris at its most iconic.",
+          "Artist ateliers, private gallery previews, and contemporary art curated for your collection.",
+          "VIP boutique access, trunk shows, and front-row seats at Paris Fashion Week.",
+          "Palace-tier service: suite upgrades, private bars, and access when the hotel is fully booked."
+        ];
 
     function updateHero(bgIndex, newText) {
       heroBgs.forEach(bg => bg.classList.remove('active'));
