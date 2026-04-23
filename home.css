@@ -759,10 +759,13 @@
 .cert-card__desc em { color: var(--gold-light); font-style: italic; }
 
 /* ══════════════════════════════════════════════════════
-   AMENITIES GRID  (replaces old trust-row)
+   AMENITIES GRID
 ══════════════════════════════════════════════════════ */
-.trust-row.fade-up {
+.amenities-section {
   padding: 80px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  text-align: center;
 }
 .amenities-grid {
   display: grid;
