@@ -153,6 +153,27 @@
     });
   }
 
+  /* ── PAGE TRANSITIONS ───────────────────────────── */
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => { loader.style.display = 'none'; }, 600);
+    }, 50);
+
+    document.querySelectorAll('a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        loader.style.display = 'block';
+        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+        setTimeout(() => { window.location.href = href; }, 500);
+      });
+    });
+  }
+
   /* ── ACTIVE NAV LINK ────────────────────────────── */
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav__links a, .nav__mobile a').forEach(a => {
