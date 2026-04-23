@@ -178,6 +178,8 @@
 @media (max-width: 768px) {
   .phil-section__inner, .phil-section__inner--reverse { grid-template-columns: 1fr; direction: ltr; }
   .network-grid { grid-template-columns: 1fr; }
+  .impossible-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
   .phil-section--bg, .phil-section--panel { padding: 80px 0; }
+  .impossible-requests { padding: 80px 0; }
   .phil-hero { height: 60vh; }
 }
