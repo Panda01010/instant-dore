@@ -123,55 +123,28 @@
   border-top: 1px solid rgba(201,169,110,0.15); /* Crisp faint gold */
   border-bottom: 1px solid rgba(201,169,110,0.15);
   padding: 1.8rem 0;
-  
-  /* Enable lush native tactile scrolling */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  
+  overflow: hidden;
   white-space: nowrap;
   position: relative;
-  cursor: grab;
 }
-.marquee-strip::-webkit-scrollbar {
-  display: none;
-}
-.marquee-strip:active {
-  cursor: grabbing;
-}
-
 /* Beautiful seamless fade effects on the left and right edges */
-/* The pseudo-elements must be sticky so they remain planted on the left/right screen edges while the user scrolls! */
 .marquee-strip::before,
 .marquee-strip::after {
   content: '';
-  position: sticky;
+  position: absolute;
   top: 0; bottom: 0;
   width: 15vw;
-  height: 100%;
-  pointer-events: none;
   z-index: 2;
-  flex-shrink: 0;
+  pointer-events: none;
 }
-.marquee-strip::before {
-  left: 0;
-  margin-right: -15vw; /* Pull text under the fade */
-  background: linear-gradient(to right, var(--bg-2) 0%, transparent 100%);
-}
-.marquee-strip::after {
-  right: 0;
-  margin-left: -15vw;
-  background: linear-gradient(to left, var(--bg-2) 0%, transparent 100%);
-}
+.marquee-strip::before { left: 0; background: linear-gradient(to right, var(--bg-2) 0%, transparent 100%); }
+.marquee-strip::after { right: 0; background: linear-gradient(to left, var(--bg-2) 0%, transparent 100%); }
 
 .marquee-strip__track {
   display: inline-flex;
   gap: 3rem;
   align-items: center;
-  padding: 0 4rem; /* padding inside the scrolling area */
-  /* Animation removed so user has full physical control over scrolling */
-  min-width: max-content;
+  animation: marquee 35s linear infinite;
 }
 .marquee-strip__track span {
   font-family: var(--font-sans);
