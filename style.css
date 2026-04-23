@@ -84,17 +84,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   -webkit-backdrop-filter: blur(12px);
 }
 .nav__inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1400px; /* Allow nav to stretch wider than default container */
   margin: 0 auto;
 }
 .nav__right {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-right: 2rem; /* Space before the hamburger */
+  justify-self: end;
+  margin-right: 2rem; /* Balance the left margin */
 }
 
 /* Logo — Simple serif text + monogram circle */
@@ -108,8 +110,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 12px;
   letter-spacing: 0.05em;
   flex-shrink: 0;
-  margin-left: 2rem; 
-  margin-right: auto; /* Pushes the CTA and Hamburger to the far right */
+  justify-self: start;
+  margin-left: 2rem; /* Add generous space from the left side */
 }
 .nav__logo-mark {
   width: 36px; height: 36px;
@@ -124,9 +126,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1;
 }
 
-/* Nav links — we now use a premium global hamburger menu instead of text links */
+/* Nav links — serif, medium size, matching Paris VIP */
 .nav__links {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  justify-self: center;
 }
 .nav__links a {
   font-family: var(--font-serif);
@@ -165,22 +170,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .nav__cta:hover { background: transparent; color: var(--gold-light); }
 
-/* Always-On Premium Hamburger */
+/* Hamburger */
 .nav__hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
-  gap: 6px;
-  padding: 10px;
-  justify-self: end;
-  margin-right: 2rem; /* Mirror the logo's left space */
+  gap: 6px; /* Slightly more gap for elegance */
+  padding: 10px; /* Bigger touch target */
+  margin-right: 1.5rem; /* Space it safely away from the right edge */
+  border-radius: 50%;
+  transition: background 0.3s var(--ease);
+}
+.nav__hamburger:hover {
+  background: rgba(255,255,255,0.05); /* Slight luxury hover on the icon */
 }
 .nav__hamburger span {
-  display: block; width: 32px; height: 1.5px; /* Wider, more elegant strokes */
-  background: var(--white);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease), background 0.3s var(--ease);
-}
-.nav__hamburger:hover span {
-  background: var(--gold-light);
+  display: block; width: 28px; height: 1.5px;
+  background: var(--gold); /* Change from white to gold for a premium touch */
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
 /* Full-screen mobile nav */
