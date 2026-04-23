@@ -685,7 +685,9 @@
     padding-bottom: 50px; 
     justify-content: center;
   }
-  .hero__title { font-size: 2.1rem; display: block; }
+  .nav__logo-img { height: 38px; }
+  .hero__title { font-size: 1.85rem; display: block; min-height: auto; }
+  .hero__lead { font-size: 0.95rem; margin-bottom: 2rem; }
   .desktop-br { display: none; }
   .mobile-br { display: block; content: ""; }
   .hero-locale-wrap { display: inline; }

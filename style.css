@@ -70,12 +70,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  z-index: 1000;
+  z-index: 10000; /* Ultra high to stay above all content */
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   transition: height 0.3s var(--ease), background 0.3s var(--ease);
+}
+/* Ensure the nav bar blends into the mobile menu when open */
+.nav.menu-open {
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
 }
 .nav.scrolled {
   height: 85px; /* Stay slightly taller than before */
@@ -258,11 +264,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav__hamburger {
   display: none;
   flex-direction: column;
-  gap: 6px; /* Slightly more gap for elegance */
-  padding: 10px; /* Bigger touch target */
-  margin-right: 1.5rem; /* Space it safely away from the right edge */
+  gap: 6px;
+  padding: 10px;
+  margin-right: 1.5rem;
   border-radius: 50%;
   transition: background 0.3s var(--ease);
+  position: relative;
+  z-index: 10000; /* Ensure button stays on top of menu */
 }
 .nav__hamburger:hover {
   background: rgba(255,255,255,0.05); /* Slight luxury hover on the icon */
@@ -273,26 +281,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
 
-/* Full-screen mobile nav */
+/* Full-screen mobile nav - Premium Overhaul */
 .nav__mobile {
-  display: none;
+  display: flex;
+  visibility: hidden;
   position: fixed; inset: 0;
-  background: var(--bg);
-  z-index: 999;
-  flex-direction: column; align-items: center; justify-content: center;
-  gap: 2.5rem;
+  background: #0d0d0e; /* Deepest black for zero bleed-through */
+  z-index: 9999;
+  flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: 15vh; /* Push links down from the notch/logo area */
+  gap: 2rem;
   opacity: 0; pointer-events: none;
-  transition: opacity 0.35s var(--ease);
+  transition: all 0.4s var(--ease);
+  transform: translateY(-10px);
+  will-change: opacity, transform;
 }
-.nav__mobile.open { pointer-events: all; opacity: 1; }
-.nav__mobile a {
+.nav__mobile.open { 
+  visibility: visible;
+  pointer-events: all; 
+  opacity: 1; 
+  transform: translateY(0);
+}
+.nav__mobile > a:not(.nav__mobile-cta) {
   font-family: var(--font-serif);
-  font-size: 2.4rem;
+  font-size: 1.6rem; /* More elegant refined size */
   font-weight: 400;
   color: var(--white);
-  transition: color 0.25s;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
 }
-.nav__mobile a:hover { color: var(--gold-light); }
+.nav__mobile > a:hover { color: var(--gold-light); }
 .nav__mobile-cta {
   font-family: var(--font-sans) !important;
   font-size: 0.9rem !important;
@@ -308,28 +326,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav__mobile-lang {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  padding: 12px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05); /* Faint luxury line */
 }
 
 .nav__mobile-lang a {
   color: var(--muted) !important;
-  font-size: 0.85rem !important;
+  font-size: 0.8rem !important; /* Elegant and small */
   font-family: var(--font-sans) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 400 !important;
 }
 
 .nav__mobile-lang a.active {
-  color: var(--white) !important;
-  font-weight: 600;
+  color: var(--gold) !important;
+  font-weight: 600 !important;
 }
 
 .nav__mobile-lang-sep {
   color: rgba(255,255,255,0.1);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .nav.menu-open .nav__hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -614,5 +633,5 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.85;
 }
 @media (max-width: 600px) {
-  .nav__logo-img { height: 60px; }
+  .nav__logo-img { height: 45px; }
 }
