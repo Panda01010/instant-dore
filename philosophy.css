@@ -1,0 +1,183 @@
+/* =====================================================
+   PHILOSOPHY PAGE — Dark Luxury
+   ===================================================== */
+
+/* ── Cinematic Hero ──────────────────────────────── */
+.phil-hero {
+  position: relative;
+  height: 75vh; min-height: 560px;
+  display: flex; align-items: flex-end;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+.phil-hero__media { position: absolute; inset: 0; z-index: 0; }
+.phil-hero__media img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.phil-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(17,18,20,0.95) 0%, rgba(17,18,20,0.4) 55%, rgba(17,18,20,0.15) 100%);
+}
+.phil-hero__content { position: relative; z-index: 1; }
+.phil-hero__title { color: var(--white); line-height: 1.1; margin-top: 1.25rem; }
+.phil-hero__title em { font-style: italic; color: var(--gold-light); }
+
+/* ── Phil Sections ─────────────────────────────── */
+.phil-section--bg    { background: var(--bg);  padding: 120px 0; }
+.phil-section--panel { background: var(--bg-2); padding: 120px 0; }
+
+.phil-section__inner {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.phil-section__inner--reverse { direction: rtl; }
+.phil-section__inner--reverse > * { direction: ltr; }
+
+.phil-section__num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+  user-select: none;
+}
+.phil-section__num span { writing-mode: vertical-rl; letter-spacing: -0.04em; }
+
+.phil-heading { color: var(--white); }
+.phil-heading em { font-style: italic; color: var(--gold-light); }
+
+.phil-body {
+  font-size: 0.97rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Quote Card ─────────────────────────────────── */
+.phil-quote-card {
+  padding: 3rem;
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  background: var(--bg-3);
+  position: relative;
+}
+.phil-quote-card::before {
+  content: '\201C';
+  position: absolute; top: 1.5rem; left: 2rem;
+  font-family: var(--font-serif); font-size: 5rem;
+  color: var(--gold); opacity: 0.25; line-height: 1; font-style: italic;
+}
+.phil-quote-card__text {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.2rem; color: var(--off-white);
+  line-height: 1.7; margin-bottom: 1.5rem;
+}
+.phil-quote-card__attr {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500;
+}
+
+/* ── Discretion Pillars ─────────────────────────── */
+.discretion-pillars { display: flex; flex-direction: column; gap: 1.25rem; }
+.discretion-pillar {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  transition: background 0.3s, border-color 0.3s;
+}
+.discretion-pillar:hover { background: rgba(255,255,255,0.06); border-color: var(--border-gold); }
+.discretion-pillar__icon { width: 40px; height: 40px; flex-shrink: 0; color: var(--gold); }
+.discretion-pillar__icon svg { width: 100%; height: 100%; }
+.discretion-pillar h3 { font-family: var(--font-serif); font-size: 1.05rem; color: var(--white); margin-bottom: 0.25rem; }
+.discretion-pillar p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+/* ── Network Section ────────────────────────────── */
+.phi-network__header { max-width: 640px; margin-bottom: 4rem; }
+
+.network-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.network-card {
+  padding: 3rem 2.5rem;
+  background: var(--bg-2);
+  transition: background 0.3s;
+}
+.network-card:hover { background: var(--bg-3); }
+.network-card__icon { width: 48px; height: 48px; color: var(--gold); margin-bottom: 1.5rem; }
+.network-card__icon svg { width: 100%; height: 100%; }
+.network-card h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; color: var(--white); margin-bottom: 0.75rem; }
+.network-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
+
+/* ── Impossible Requests (Case Studies) ────────── */
+.impossible-requests {
+  padding: 120px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.impossible-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 4rem;
+}
+.impossible-card {
+  padding: 3rem;
+  border-radius: 20px;
+  background: var(--bg-2);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.impossible-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.impossible-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.impossible-card__body {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.impossible-card__meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .phil-section__inner { grid-template-columns: 1fr 1fr; }
+  .phil-section__num { display: none; }
+}
+@media (max-width: 768px) {
+  .phil-section__inner, .phil-section__inner--reverse { grid-template-columns: 1fr; direction: ltr; }
+  .network-grid { grid-template-columns: 1fr; }
+  .phil-section--bg, .phil-section--panel { padding: 80px 0; }
+  .phil-hero { height: 60vh; }
+}

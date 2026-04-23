@@ -1,0 +1,244 @@
+/* =====================================================
+   SERVICES PAGE — Dark Luxury
+   ===================================================== */
+
+/* ── Service Sections (alternating panels) ─────────── */
+.svc-section { padding: 120px 0; }
+.svc-section--dark  { background: var(--bg); }
+.svc-section--panel { background: var(--bg-2); }
+
+.svc-section__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.svc-section__inner--reverse { direction: rtl; }
+.svc-section__inner--reverse > * { direction: ltr; }
+
+/* Image wrapper */
+.svc-media-wrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.svc-media-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease);
+}
+.svc-media-wrap:hover img { transform: scale(1.04); }
+
+/* Badge on image */
+.svc-media-badge {
+  position: absolute;
+  bottom: 2rem; right: 2rem;
+  background: rgba(17,18,20,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 90px;
+}
+.svc-media-badge span {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--gold);
+  line-height: 1; margin-bottom: 4px;
+}
+.svc-media-badge p {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Content */
+.svc-section__content h2 em { font-style: italic; color: var(--gold-light); }
+.svc-body {
+  font-size: 0.97rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+/* Feature list */
+.svc-features {
+  margin-bottom: 2.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.svc-features li {
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 0.88rem; color: var(--off-white);
+  font-weight: 400; letter-spacing: 0.02em;
+}
+.svc-features__icon { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; }
+
+/* ── Bottom CTA Band ─────────────────────────────── */
+.cta-band {
+  padding: 100px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(158,140,119,0.07), transparent 70%);
+}
+.cta-band__inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 3rem; flex-wrap: wrap;
+}
+.cta-band .section-eyebrow { color: var(--gold); }
+
+/* ══════════════════════════════════════════════════════
+   DESTINATIONS GRID
+══════════════════════════════════════════════════════ */
+.destinations {
+  padding: 120px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.destinations__header {
+  margin-bottom: 4rem;
+}
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.dest-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.dest-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-gold);
+}
+.dest-card__img {
+  aspect-ratio: 3/2;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.2s var(--ease);
+}
+.dest-card:hover .dest-card__img {
+  transform: scale(1.04);
+}
+.dest-card__body {
+  padding: 1.5rem;
+}
+.dest-card__city {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.dest-card__desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Paris-focused overrides */
+.destinations-grid--paris {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.dest-card--tall .dest-card__img {
+  aspect-ratio: 16/9;
+}
+.dest-card__tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,169,110,0.08);
+  border: 1px solid var(--border-gold);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .destinations-grid--paris { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════
+   FAQ ACCORDION
+══════════════════════════════════════════════════════ */
+.faq-section {
+  padding: 100px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+}
+.faq__header { margin-bottom: 4rem; }
+.faq-list {
+  max-width: 760px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: color 0.3s var(--ease);
+}
+.faq-q::after {
+  content: '+';
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.faq-q[aria-expanded='true'] { color: var(--gold); }
+.faq-q[aria-expanded='true']::after { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease);
+}
+.faq-a p {
+  padding: 0 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .svc-section__inner,
+  .svc-section__inner--reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
+  .svc-section__inner--reverse .svc-section__media { order: -1; }
+  .svc-media-wrap { aspect-ratio: 16/9; }
+  .cta-band__inner { flex-direction: column; text-align: center; }
+  .cta-band__inner .section-eyebrow { justify-content: center; }
+  .svc-section { padding: 80px 0; }
+}

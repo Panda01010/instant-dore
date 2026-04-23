@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Vault | Off-Market Access | L'Instant Doré</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="vault.css">
+</head>
+<body class="page-vault">
+
+  <!-- ══ NAVIGATION ════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo.png" alt="L'Instant Doré" class="nav__logo-img">
+      </a>
+      <!-- Minimal Nav for Vault -->
+      <a href="index.html" class="nav__cta">Exit Vault</a>
+    </div>
+  </nav>
+
+  <!-- ══ VAULT LOGIN STATE ═════════════════════════════════ -->
+  <section class="vault-login" id="vault-login">
+    <div class="vault-login__inner fade-up">
+      <svg class="vault-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      <h1 class="section-title section-title--lg">The Vault</h1>
+      <p class="section-lead">Restricted Access. Enter cipher to view off-market acquisitions.</p>
+      
+      <div class="vault-pin-container">
+        <input type="password" id="vault-pin" class="vault-pin" maxlength="4" placeholder="••••" autocomplete="off" />
+      </div>
+      <p id="vault-error" class="vault-error"></p>
+    </div>
+    
+    <div class="vault-hint">
+      System v.1.0.24
+    </div>
+  </section>
+
+  <!-- ══ VAULT UNLOCKED STATE ══════════════════════════════ -->
+  <section class="vault-content" id="vault-content" style="display:none;">
+    <div class="container">
+      <div class="vault-header fade-up">
+        <svg class="vault-icon vault-icon--unlocked" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+        <h2 class="section-title section-title--lg">Off-Market <em>Assets</em></h2>
+        <p class="section-lead">Extremely rare allocations. Contact your liaison to initiate acquisition.</p>
+      </div>
+
+      <div class="vault-grid">
+        <div class="vault-item fade-up delay-1">
+          <div class="vault-item__img">
+            <img src="images/vault_watch.png" alt="Rare Vintage Watch" loading="lazy">
+          </div>
+          <div class="vault-item__body">
+            <p class="vault-item__label">Horology</p>
+            <h3 class="vault-item__title">Patek Philippe Ref. 2499</h3>
+            <p class="vault-item__desc">Third series, 18k yellow gold. Unpolished case, complete original documentation. Provenance available strictly upon request.</p>
+            <a href="contact.html" class="btn btn--outline" style="width:100%;text-align:center;">Inquire</a>
+          </div>
+        </div>
+
+        <div class="vault-item fade-up delay-2">
+          <div class="vault-item__img">
+            <img src="images/vault_estate.png" alt="Private Estate" loading="lazy">
+          </div>
+          <div class="vault-item__body">
+            <p class="vault-item__label">Real Estate</p>
+            <h3 class="vault-item__title">Villa Azure, Cap Ferrat</h3>
+            <p class="vault-item__desc">Completely off-market. 8 bedrooms, infinity edge into the Mediterranean, private deep-water dock. Anonymous seller.</p>
+            <a href="contact.html" class="btn btn--outline" style="width:100%;text-align:center;">Inquire</a>
+          </div>
+        </div>
+
+        <div class="vault-item fade-up delay-3">
+          <div class="vault-item__img">
+            <img src="images/vault_art.png" alt="Fine Art" loading="lazy">
+          </div>
+          <div class="vault-item__body">
+            <p class="vault-item__label">Fine Art</p>
+            <h3 class="vault-item__title">Post-War Abstract Expressionism</h3>
+            <p class="vault-item__desc">Major 1950s canvas currently in a Swiss freeport. Never before offered at public auction. Viewing arranged by private jet only.</p>
+            <a href="contact.html" class="btn btn--outline" style="width:100%;text-align:center;">Inquire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+    /* Vault Logic */
+    const pinInput = document.getElementById('vault-pin');
+    const loginSection = document.getElementById('vault-login');
+    const contentSection = document.getElementById('vault-content');
+    const errorMsg = document.getElementById('vault-error');
+
+    pinInput.addEventListener('input', (e) => {
+      errorMsg.textContent = "";
+      pinInput.classList.remove('shake');
+      
+      const val = e.target.value;
+      if (val.length === 4) {
+        if (val === '1024') {
+          unlockVault();
+        } else {
+          // Wrong PIN Animation
+          pinInput.classList.add('shake');
+          errorMsg.textContent = "Access Denied.";
+          setTimeout(() => { pinInput.value = ''; }, 400);
+        }
+      }
+    });
+
+    function unlockVault() {
+      pinInput.blur();
+      pinInput.style.borderColor = "var(--gold)";
+      pinInput.style.color = "var(--gold)";
+      
+      // Transform logic
+      loginSection.animate([
+        { opacity: 1, transform: 'scale(1)' },
+        { opacity: 0, transform: 'scale(1.05)' }
+      ], { duration: 800, easing: 'ease', fill: 'forwards' }).onfinish = () => {
+        loginSection.style.display = 'none';
+        contentSection.style.display = 'block';
+        window.scrollTo(0,0);
+        
+        // Trigger generic fade-ups inside vault
+        const fades = contentSection.querySelectorAll('.fade-up');
+        fades.forEach(el => el.classList.add('visible'));
+      };
+    }
+  </script>
+</body>
+</html>
