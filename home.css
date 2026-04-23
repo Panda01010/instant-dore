@@ -690,31 +690,40 @@
   background: var(--bg-3);
   border: 1px solid var(--border);
   border-radius: 24px;
-  padding: 2rem 2rem 2rem;
+  padding: 2rem;
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 1.25rem;
   transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
 }
 .cert-card:hover {
   border-color: var(--border-gold);
   transform: translateY(-4px);
 }
-.cert-card__icon {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 10px;
+/* Text-based brand logo pill */
+.cert-logo {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  padding: 6px 16px;
+  border-radius: 10px;
+  width: fit-content;
 }
-.cert-card__icon svg {
-  width: 32px;
-  height: 32px;
+.cert-logo--airbnb {
+  color: #fff;
+  background: #FF5A5F;
+}
+.cert-logo--booking {
+  color: #fff;
+  background: #003580;
+  font-size: 0.95rem;
+}
+.cert-logo--vrbo {
+  color: #fff;
+  background: #1DAEE9;
+  letter-spacing: 0.05em;
 }
 .cert-card__body {
   display: flex;
