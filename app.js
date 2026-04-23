@@ -260,4 +260,18 @@
     });
   });
 
+  /* ── LANGUAGE DROPDOWN ──────────────────────────── */
+  const langTrigger = document.querySelector('.nav__lang-trigger');
+  const langDropdown = document.querySelector('.nav__lang-dropdown');
+  if (langTrigger && langDropdown) {
+    langTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('active');
+    });
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+      langDropdown.classList.remove('active');
+    });
+  }
+
 })();
