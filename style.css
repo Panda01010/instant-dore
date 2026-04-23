@@ -611,7 +611,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   body { padding-bottom: 80px; }
 }
 @media (max-width: 600px) {
-  :root { --nav-h: 80px; }
+  :root { --nav-h: 95px; }
   .footer__inner { grid-template-columns: 1fr; }
   .footer__legal { flex-direction: column; gap: 0.75rem; }
 }
@@ -633,7 +633,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0.85;
 }
 @media (max-width: 600px) {
-  .nav__logo-img { height: 45px; }
+  .nav__logo-img { height: 65px; }
+  .nav.scrolled .nav__logo-img { height: 50px; }
 }
 /* ── PAGE TRANSITION ────────────────────────────── */
 #page-loader {
